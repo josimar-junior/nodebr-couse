@@ -1,12 +1,12 @@
 [
     {
         "id": 1,
-        "name": "Flass",
+        "name": "Flash",
         "power": "Speed"
     },
     {
-        "id": 1,
-        "name": "Flass",
-        "power": "Speed"
+        "name": "Batman",
+        "power": "Money",
+        "id": 2
     }
 ]

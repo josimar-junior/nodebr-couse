@@ -40,6 +40,33 @@ class Database {
         const filteredData = data.filter(item => id ? item.id === id : true);
         return filteredData;
     }
+
+    async remove(id) {
+        if(!id) {
+            return await this.write([]);
+        }
+
+        const data = await this.getFile();
+        const index = data.findIndex(item => item.id === parseInt(id));
+        if(index === -1) {
+            throw Error('Hero not found');
+        }
+        data.splice(index, 1);
+        return await this.write(data);
+    }
+
+    async update(id, modifications) {
+        const data = await this.getFile();
+        const index = data.findIndex(item => item.id === parseInt(id));
+        if(index === -1) {
+            throw Error('Hero not found');
+        }
+        data[index] = {
+            ...modifications,
+            id
+        }
+        return await this.write(data);
+    }
 }
 
 module.exports = new Database();
